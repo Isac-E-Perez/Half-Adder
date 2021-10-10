@@ -57,3 +57,5 @@ end test;
 -- to elaborate: ghdl -e filename (testbench)
 
 -- to execute the testbench: ghdl -r filename (testbench)
+
+-- now we want to verify the unis using a waveform viewer: ghdl -r filename (testbench) --vcd=filename.vcd
