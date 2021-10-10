@@ -54,4 +54,4 @@ end test;
 -- analyze the half adder: ghdl -a filename.vhdl
 -- no messages means everything is good and ready to go
 
--- to execute the testbench: elaborate: ghdl -e filename 
+-- to execute the testbench: elaborate: ghdl -e filename (testbench)
