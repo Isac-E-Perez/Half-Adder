@@ -58,4 +58,6 @@ end test;
 
 -- to execute the testbench: ghdl -r filename (testbench)
 
--- now we want to verify the unis using a waveform viewer: ghdl -r filename (testbench) --vcd=filename.vcd
+-- now we want to verify the unit using a waveform viewer: ghdl -r filename (testbench) --vcd=filename.vcd
+
+-- to check out waveform use GTKWave program: gtkwave filename.vcd
