@@ -1,1 +1,7 @@
-# Half-Adder-Project
+# Half Adder Project
+
+### About:
+
+### Note:
+
+### Result:
