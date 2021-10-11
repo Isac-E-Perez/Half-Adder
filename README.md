@@ -14,6 +14,13 @@ If you use MinGW 32 bit (like I did), you would also need to use GTKWave 32 bit 
 The circuit diagram was made in Simulink and the following simulation is provided in the files.
 
 ### Result:
+
+In VHDL, a and b are the inputs (IN), and o and c are the output (OUT) of my project.  
+
+**I/O's are specified here (the circuit is specified using a Hardware Description Language)**
+
+<img width="416" alt="Screen Shot 2021-10-10 at 8 33 52 PM" src="https://user-images.githubusercontent.com/89553126/136721364-99b9f984-636e-4793-9610-510a316d134f.png">
+
 Therefore, I know that my half adder code is logically correct. 
 
 ![0](https://user-images.githubusercontent.com/89553126/136716713-9a4b099c-b1db-4485-95f8-7093f68bfaea.PNG)
