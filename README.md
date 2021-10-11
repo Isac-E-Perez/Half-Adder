@@ -33,24 +33,34 @@ Afterwards, I worked on the behavioral (functional) simulation. Here, I will onl
 
 The entity block has no input or output singals going into or out of the 'testbench', which makes sense since 'testbench' is a complete unit. The 'testbench' will go ahead and send the signals to the logic circuit in which it will read back those signals. Afterwards, I could check out whether these signals are correct. Therefore, I don't need anything going into or out of the testbench. Additionally, a process was created so that I could deliver signals sequentially and not concurrenlty.
 
-Finally, I verified the unit outputted by using a waveform viewer. 
+Finally, I verified the unit outputted by using a waveform viewer. Additionally, I verified that the logic was correct with the digital design simulation.
+
+**Test where the variables started with forced unknowns**
 
 ![0](https://user-images.githubusercontent.com/89553126/136716713-9a4b099c-b1db-4485-95f8-7093f68bfaea.PNG)
+
+**Test where the variables started at 0**
 
 ![1](https://user-images.githubusercontent.com/89553126/136716714-3cd6131b-36d9-4e3d-9847-868f1597bd40.PNG)
 
 ![1](https://user-images.githubusercontent.com/89553126/136720365-83850361-0f62-4152-ab39-8a8c79747942.PNG)
 
+**Test where the variables started at *a* = 0 and *b* = 1**
+
 ![2](https://user-images.githubusercontent.com/89553126/136716716-8e8b0e60-3517-4d14-bfea-a43b0c669565.PNG)
 
 ![2](https://user-images.githubusercontent.com/89553126/136720377-5b149233-d8b3-4828-8998-43a1c0389f48.PNG)
+
+**Test where the variables started at *a* = 1 and *b* = 0**
 
 ![3](https://user-images.githubusercontent.com/89553126/136716718-9e2f2e1e-73aa-496c-b7cf-5f4da912e051.PNG)
 
 ![3](https://user-images.githubusercontent.com/89553126/136720380-dabd5df5-c3e9-4644-bf09-5175cdb53a22.PNG)
 
+**Test where the variables started at *a* = 1 and *b* = 1**
+
 ![4](https://user-images.githubusercontent.com/89553126/136716719-2ea3dd1f-6f07-483d-bf26-dab53e9f42a9.PNG)
 
 ![4](https://user-images.githubusercontent.com/89553126/136720385-55985df6-2f6b-461c-a49b-c8cbe9c06697.PNG)
 
-I should be expecting these outputs for the conditions therefore, I know my logic gate code is logically correct.
+I should be expecting these outputs for the conditions therefore, I know my half adder code is logically correct.
