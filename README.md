@@ -21,7 +21,19 @@ In VHDL, a and b are the inputs (IN), and o and c are the output (OUT) of my pro
 
 <img width="416" alt="Screen Shot 2021-10-10 at 8 33 52 PM" src="https://user-images.githubusercontent.com/89553126/136721364-99b9f984-636e-4793-9610-510a316d134f.png">
 
-Therefore, I know that my half adder code is logically correct. 
+**Internal description of the logic circuit is specified here**
+
+<img width="563" alt="Screen Shot 2021-10-10 at 8 37 44 PM" src="https://user-images.githubusercontent.com/89553126/136721561-58a3ddc1-7e8e-43a0-b5f5-69850576dc99.png">
+
+Afterwards, I worked on the behavioral (functional) simulation. Here, I will only verify the logical operation of the circuit. Stimuli is provided to the logic circuit, so I can verify the outputs behave as I expect. The VHDL file called '*ha_tb*' is where I specified the stimuli to the logic circuit.
+
+<img width="489" alt="Screen Shot 2021-10-10 at 8 40 57 PM" src="https://user-images.githubusercontent.com/89553126/136721769-7e18015a-ba77-451a-8dc5-10e713cb0831.png">
+
+<img width="792" alt="Screen Shot 2021-10-10 at 8 41 27 PM" src="https://user-images.githubusercontent.com/89553126/136721784-590a3116-67b9-4bbc-aea6-d66b6b5a06ab.png">
+
+The entity block has no input or output singals going into or out of the 'testbench', which makes sense since 'testbench' is a complete unit. The 'testbench' will go ahead and send the signals to the logic circuit in which it will read back those signals. Afterwards, I could check out whether these signals are correct. Therefore, I don't need anything going into or out of the testbench. Additionally, a process was created so that I could deliver signals sequentially and not concurrenlty.
+
+Finally, I verified the unit outputted by using a waveform viewer. 
 
 ![0](https://user-images.githubusercontent.com/89553126/136716713-9a4b099c-b1db-4485-95f8-7093f68bfaea.PNG)
 
@@ -40,3 +52,5 @@ Therefore, I know that my half adder code is logically correct.
 ![4](https://user-images.githubusercontent.com/89553126/136716719-2ea3dd1f-6f07-483d-bf26-dab53e9f42a9.PNG)
 
 ![4](https://user-images.githubusercontent.com/89553126/136720385-55985df6-2f6b-461c-a49b-c8cbe9c06697.PNG)
+
+I should be expecting these outputs for the conditions therefore, I know my logic gate code is logically correct.
