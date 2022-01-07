@@ -19,17 +19,102 @@ In VHDL, a and b are the inputs (IN), and o and c are the output (OUT) of my pro
 
 **I/O's are specified here (the circuit is specified using a Hardware Description Language)**
 
-<img width="416" alt="Screen Shot 2021-10-10 at 8 33 52 PM" src="https://user-images.githubusercontent.com/89553126/136721364-99b9f984-636e-4793-9610-510a316d134f.png">
+```VHDL
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ha is 
+	port 
+	(
+		a: in std_ulogic; -- single beat signal
+		b: in std_ulogic;
+		o: out std_ulogic; -- sum 
+		c: out std_ulogic -- carry out
+	);
+end ha;
+```
 
 **Internal description of the logic circuit is specified here**
 
-<img width="563" alt="Screen Shot 2021-10-10 at 8 37 44 PM" src="https://user-images.githubusercontent.com/89553126/136721561-58a3ddc1-7e8e-43a0-b5f5-69850576dc99.png">
+```VHDL
+-- describe the behavior of the entity created
+
+architecture behave of ha is 
+begin
+	o <= a xor b; -- half adder
+	c <= a and b; -- carry out
+end behave;
+
+-- note: check if syntax error in code. syntax check: ghdl -s filename.vhdl
+```
 
 Afterwards, I worked on the behavioral (functional) simulation. Here, I will only verify the logical operation of the circuit. Stimuli is provided to the logic circuit, so I can verify the outputs behave as I expect. The VHDL file called '*ha_tb*' is where I specified the stimuli to the logic circuit.
 
-<img width="489" alt="Screen Shot 2021-10-10 at 8 40 57 PM" src="https://user-images.githubusercontent.com/89553126/136721769-7e18015a-ba77-451a-8dc5-10e713cb0831.png">
+```VHDL
+library ieee;
+use ieee.std_logic_1164.all;
 
-<img width="792" alt="Screen Shot 2021-10-10 at 8 41 27 PM" src="https://user-images.githubusercontent.com/89553126/136721784-590a3116-67b9-4bbc-aea6-d66b6b5a06ab.png">
+entity ha_tb is -- no input or output signals
+end ha_tb;
+
+architecture test of ha_tb is
+	component ha 
+		port 
+		(
+			a: in std_ulogic; -- single beat signal
+			b: in std_ulogic;
+			o: out std_ulogic; -- sum 
+			c: out std_ulogic -- carry out
+		);
+	end component;
+	
+	-- create a number of signals I will use in my testbench
+	
+	signal a, b, o, c : std_ulogic;
+begin -- describe the behavior of my testbench
+	half_adder: ha port map (a => a, b => b, o => o, c => c);
+	
+	process begin
+	
+	a <= 'X';
+	b <= 'X';
+	wait for 1 ns;
+	
+	a <= '0';
+	b <= '0';
+	wait for 1 ns;
+	
+	a <= '0';
+	b <= '1';
+	wait for 1 ns;
+	
+	a <= '1';
+	b <= '0';
+	wait for 1 ns;
+	
+	a <= '1';
+	b <= '1';
+	wait for 1 ns;
+	
+	assert false  report "Reached end of test";
+	wait;
+	
+	end process;
+end test;
+
+-- cls to clear terminal screen. 
+
+-- analyze the half adder: ghdl -a filename.vhdl
+-- no messages means everything is good and ready to go
+
+-- to elaborate: ghdl -e filename (testbench)
+
+-- to execute the testbench: ghdl -r filename (testbench)
+
+-- now we want to verify the unit using a waveform viewer: ghdl -r filename (testbench) --vcd=filename.vcd
+
+-- to check out waveform use GTKWave program: gtkwave filename.vcd
+```
 
 The entity block has no input or output singals going into or out of the 'testbench', which makes sense since 'testbench' is a complete unit. The 'testbench' will go ahead and send the signals to the logic circuit in which it will read back those signals. Afterwards, I could check out whether these signals are correct. Therefore, I don't need anything going into or out of the testbench. Additionally, the process statement is a concurrent statement which is constituted of sequential statements exclusively.
 
